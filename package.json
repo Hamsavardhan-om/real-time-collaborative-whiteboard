@@ -1,0 +1,15 @@
+{
+  "name": "collaborative_real_time_app",
+  "version": "1.0.0",
+  "description": "Collaborative app that let's multiple people work on something in real time",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "dev": "node index.js"
+  },
+  "author": "Hamsavardhan O M",
+  "license": "ISC",
+  "devDependencies": {
+    "prettier": "^3.7.4"
+  }
+}
