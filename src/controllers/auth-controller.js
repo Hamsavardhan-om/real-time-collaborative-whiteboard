@@ -7,11 +7,14 @@ import {sendEmail, emailVerificationMailgenContent } from "../services/mail.js"
 const generateAccessAndRefreshToken = async (userID) => {
     try {
         const user = await User.findById(userID);
+        if(!user)
+        throw new APIError(404, "User not found while generating token");
         const accessToken = user.generateAccessToken();
         const refreshToken = user.generateRefreshToken();
 
         user.refreshToken = refreshToken;
         await user.save({ validateBeforeSave: false });
+
         return { accessToken, refreshToken };
     } catch (error) {
         throw new APIError(
@@ -76,6 +79,49 @@ const registerUser = asyncHandler(async(req,res) =>
         );
 })
 
+const loginUser = asyncHandler(async (req, res) =>
+{
+    const {username, email, password} = req.body;
+
+    const user = await User.findOne({email});
+
+    if(!user)
+    return APIError(404,"User not found");
+
+    const validPassword = await user.isPasswordCorrect(password)
+
+    if(!validPassword)
+    throw new APIError(400, "Invalid credentials");
+
+    const {accessToken, refreshToken} = await generateAccessAndRefreshToken(user._id);
+
+    const loggedInUser = await User.findById(user._id).select(
+        "-password -refreshToken -emailVerificationToken -emailVerificationExpiry",
+    );
+
+    const options = {
+        httpOnly: true,
+        secure: true
+    }
+
+    return res
+        .status(200)
+        .cookie("accessToken", accessToken, options)
+        .cookie("refreshToken", refreshToken, options)
+        .json(
+            new APIResponse(
+                200,
+                {
+                    user: loggedInUser,
+                    accessToken,
+                    refreshToken
+                },
+                "User logged in successfully"
+            )
+        )
+})
+
 export {
-    registerUser
+    registerUser,
+    loginUser
 }
