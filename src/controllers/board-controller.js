@@ -3,6 +3,7 @@ import { APIError } from "../utils/api-error.js";
 import { APIResponse } from "../utils/api-response.js";
 import { Board } from "../models/board-model.js"
 import { User } from "../models/user-model.js";
+import { title } from "process";
 
 const createBoard = asyncHandler(async(req,res) =>
 {
@@ -40,6 +41,24 @@ const createBoard = asyncHandler(async(req,res) =>
     }
 })
 
+const getBoardDetails = asyncHandler(async(req,res) =>
+{
+    const {boardID} = req.params;
+
+    const board = await Board.findById(boardID).select('title owner collaborators');
+
+    return res
+        .status(200)
+        .json(
+            new APIResponse(
+                200,
+                "Board found",
+                board
+            )
+        )
+})
+
 export {
-    createBoard
+    createBoard,
+    getBoardDetails
 }
