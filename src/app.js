@@ -20,10 +20,16 @@ app.use(cookieParser());
 //import routes
 import healthCheckRouter from "./routes/healthcheck-route.js";
 import authRouter from "./routes/auth-routes.js";
+import boardRouter from "./routes/board-routes.js"
 
-//Endpoints configuration
+//Healthcheck end points
 app.use("/api/v1/healthcheck", healthCheckRouter);
+
+//Auth API endpoints
 app.use("/api/v1/auth", authRouter);
+
+//Board Endpoints
+app.use("/api/v1/boards", boardRouter);
 
 
 app.get("/",(req,res) =>
