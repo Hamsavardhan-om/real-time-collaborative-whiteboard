@@ -2,6 +2,7 @@ import { asyncHandler } from "../utils/async-handler.js";
 import { APIError } from "../utils/api-error.js";
 import { APIResponse } from "../utils/api-response.js";
 import { Board } from "../models/board-model.js"
+import { Stroke } from "../models/stroke-model.js";
 import { User } from "../models/user-model.js";
 import { title } from "process";
 
@@ -58,7 +59,25 @@ const getBoardDetails = asyncHandler(async(req,res) =>
         )
 })
 
+const getBoardData = asyncHandler(async(req,res) =>
+{
+    const {boardID} = req.params;
+
+    const strokes = await Stroke.find({ boardId: boardID })
+
+    return res
+        .status(200)
+        .json(
+            new APIResponse(
+                200,
+                "Strokes found",
+                strokes
+            )
+        )
+})
+
 export {
     createBoard,
-    getBoardDetails
+    getBoardDetails,
+    getBoardData
 }

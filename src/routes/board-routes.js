@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { createBoard, getBoardDetails } from "../controllers/board-controller.js";
+import { createBoard, getBoardData, getBoardDetails } from "../controllers/board-controller.js";
 import { verifyJWT } from "../middlewares/auth-middleware.js";
 
 const router = new Router();
@@ -8,5 +8,6 @@ const router = new Router();
 
 router.route("/").post(verifyJWT, createBoard);
 router.route("/:boardID").get(verifyJWT, getBoardDetails);
+router.route("/:boardID/strokes").get(verifyJWT, getBoardData);
 
 export default router;

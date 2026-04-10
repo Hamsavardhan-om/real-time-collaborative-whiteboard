@@ -67,4 +67,4 @@ const strokeSchema = new Schema(
 
 strokeSchema.index({ boardId: 1, createdAt: 1 });
 
-export default mongoose.model("Stroke", strokeSchema);
+export const Stroke = mongoose.model("Stroke", strokeSchema);
