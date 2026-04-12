@@ -48,7 +48,7 @@ const getBoardDetails = asyncHandler(async(req,res) =>
     const board = await Board.findById(boardID).select('title owner collaborators');
 
     if(!board)
-    return APIError(404,"Board not found");
+    throw new APIError(404,"Board not found");
 
     return res
         .status(200)
@@ -68,7 +68,7 @@ const getBoardData = asyncHandler(async(req,res) =>
     const strokes = await Stroke.find({ boardId: boardID });
 
     if(!strokes)
-    return APIError(404,"Strokes not found");
+    throw new APIError(404,"Strokes not found");
 
     return res
         .status(200)
@@ -89,7 +89,7 @@ const addCollaborators = asyncHandler(async(req,res) =>
     const board = await Board.findById(boardID);
 
     if(!board)
-    return APIError(404,"Board not found");
+    throw new APIError(404,"Board not found");
 
     for(const collaborator of collaborators)
     {
@@ -130,9 +130,37 @@ const addCollaborators = asyncHandler(async(req,res) =>
         )
 })
 
+const removeCollaborator = asyncHandler(async(req,res) =>
+{
+    const {boardID, userID} = req.params;
+
+    const board = await Board.findById(boardID);
+
+    if(!board)
+    throw new APIError(404,"Board not found");
+
+    let index = board.collaborators.findIndex(id => id.user.toString() === userID);
+    if(index === -1)
+    throw new APIError(400,"requested user is not a collaborator");
+
+    board.collaborators.splice(index,1);
+
+    await board.save({validateBeforeSave: false});
+
+    return res
+        .status(200)
+        .json(
+            new APIResponse(
+                200,
+                "Requested user deleted successfully"
+            )
+        )
+})
+
 export {
     createBoard,
     getBoardDetails,
     getBoardData,
-    addCollaborators
+    addCollaborators,
+    removeCollaborator
 }
