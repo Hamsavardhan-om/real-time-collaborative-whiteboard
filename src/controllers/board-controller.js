@@ -139,7 +139,7 @@ const removeCollaborator = asyncHandler(async(req,res) =>
     if(!board)
     throw new APIError(404,"Board not found");
 
-    let index = board.collaborators.findIndex(id => id.user.toString() === userID);
+    let index = board.collaborators.findIndex(collab => collab.user.toString() === userID);
     if(index === -1)
     throw new APIError(400,"requested user is not a collaborator");
 
