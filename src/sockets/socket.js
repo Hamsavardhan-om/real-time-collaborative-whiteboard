@@ -14,6 +14,12 @@ const initializeSocket = (server) =>
     {
         console.log(`User connected: ${socket.id}`)
 
+        socket.on("ping", () =>
+        {
+            console.log("Ping received:", socket.id)
+            socket.emit("pong")
+        })
+
         socket.on("disconnect", () =>
         {
             console.log(`User disconnected: ${socket.id}`)
