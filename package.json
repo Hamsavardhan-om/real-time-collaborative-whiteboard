@@ -24,6 +24,8 @@
     "jsonwebtoken": "^9.0.3",
     "mailgen": "^2.0.32",
     "mongoose": "^9.1.6",
-    "nodemailer": "^8.0.1"
+    "nodemailer": "^8.0.1",
+    "socket.io": "^4.8.3",
+    "socket.io-client": "^4.8.3"
   }
 }
