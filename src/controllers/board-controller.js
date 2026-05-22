@@ -61,7 +61,7 @@ const getBoardDetails = asyncHandler(async(req,res) =>
         )
 })
 
-const getBoardData = asyncHandler(async(req,res) =>
+const getBoardStrokes = asyncHandler(async(req,res) =>
 {
     const {boardID} = req.params;
 
@@ -160,7 +160,7 @@ const removeCollaborator = asyncHandler(async(req,res) =>
 export {
     createBoard,
     getBoardDetails,
-    getBoardData,
+    getBoardStrokes,
     addCollaborators,
     removeCollaborator
 }
