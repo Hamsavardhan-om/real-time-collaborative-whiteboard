@@ -1,4 +1,5 @@
 import { Server } from "socket.io"
+import registerBoardEvents from "./board-socket.js"
 
 const initializeSocket = (server) =>
 {
@@ -14,11 +15,7 @@ const initializeSocket = (server) =>
     {
         console.log(`User connected: ${socket.id}`)
 
-        socket.on("ping", () =>
-        {
-            console.log("Ping received:", socket.id)
-            socket.emit("pong")
-        })
+        registerBoardEvents(socket, io)
 
         socket.on("disconnect", () =>
         {

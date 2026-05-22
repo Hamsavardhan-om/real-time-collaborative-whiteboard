@@ -6,10 +6,5 @@ socket.on("connect", () =>
 {
     console.log("Connected:", socket.id)
 
-    socket.emit("ping");
-})
-
-socket.on("pong", () =>
-{
-    console.log("Received pong from server")
+    socket.emit("join_board", { boardID: "board A"});
 })
