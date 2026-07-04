@@ -25,6 +25,19 @@ const registerBoardEvents = (socket, io) =>
             thickness
         })
     })
+
+    socket.on("stroke_update", (data) =>
+    {
+        const { boardID, strokeID, point } = data
+
+        console.log( `${socket.id} updated stroke ${strokeID} at (${point.x}, ${point.y})`)
+
+        socket.to(boardID).emit("stroke_update",
+        {
+            strokeID,
+            point
+        })
+    })
 }
 
 export default registerBoardEvents

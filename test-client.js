@@ -22,5 +22,39 @@ socket.on("connect", () =>
             color: "red",
             thickness: 5
         })
+
+        socket.emit("stroke_update",
+        {
+            boardID: "boardA",
+            strokeID: "stroke1",
+            point:
+            {
+                x: 15,
+                y: 25
+            }
+        })
+
+        socket.emit("stroke_update",
+        {
+            boardID: "boardA",
+            strokeID: "stroke1",
+            point:
+            {
+                x: 20,
+                y: 30
+            }
+        })
+
+        socket.emit("stroke_update",
+        {
+            boardID: "boardA",
+            strokeID: "stroke1",
+            point:
+            {
+                x: 25,
+                y: 35
+            }
+        })
+
     }, 2000)
 })
