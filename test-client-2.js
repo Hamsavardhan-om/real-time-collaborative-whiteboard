@@ -18,3 +18,8 @@ socket.on("stroke_update", (data) =>
 {
     console.log("Received stroke_update:", data)
 })
+
+socket.on("stroke_end", (data) =>
+{
+    console.log("Received stroke_end:", data)
+})

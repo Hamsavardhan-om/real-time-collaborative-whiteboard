@@ -1,3 +1,4 @@
+import { log } from "node:console"
 import { Stroke } from "../models/stroke-model.js"
 
 const registerBoardEvents = (socket, io) =>
@@ -37,6 +38,19 @@ const registerBoardEvents = (socket, io) =>
             strokeID,
             point
         })
+    })
+
+    socket.on("stroke_end", (data) =>
+    {
+        const { boardID, strokeID } = data
+
+        console.log(`${socket.id} ended stroke ${strokeID}`);
+        
+        socket.to(boardID).emit("stroke_end",
+            {
+                strokeID
+            }
+        )
     })
 }
 

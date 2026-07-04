@@ -56,5 +56,11 @@ socket.on("connect", () =>
             }
         })
 
+        socket.emit("stroke_end",
+        {
+            boardID: "boardA",
+            strokeID: "stroke1"
+        })
+
     }, 2000)
 })
