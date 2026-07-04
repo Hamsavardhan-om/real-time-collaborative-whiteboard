@@ -6,13 +6,13 @@ socket.on("connect", () =>
 {
     console.log("Connected:", socket.id)
 
-    socket.emit("join_board", { boardID: "boardA" })
+    socket.emit("join_board", { boardID: "69cab36a6dc82cd19f65378a" })
 
     setTimeout(() =>
     {
         socket.emit("stroke_start",
         {
-            boardID: "boardA",
+            boardID: "69cab36a6dc82cd19f65378a",
             strokeID: "stroke1",
             point:
             {
@@ -25,7 +25,7 @@ socket.on("connect", () =>
 
         socket.emit("stroke_update",
         {
-            boardID: "boardA",
+            boardID: "69cab36a6dc82cd19f65378a",
             strokeID: "stroke1",
             point:
             {
@@ -36,7 +36,7 @@ socket.on("connect", () =>
 
         socket.emit("stroke_update",
         {
-            boardID: "boardA",
+            boardID: "69cab36a6dc82cd19f65378a",
             strokeID: "stroke1",
             point:
             {
@@ -47,7 +47,7 @@ socket.on("connect", () =>
 
         socket.emit("stroke_update",
         {
-            boardID: "boardA",
+            boardID: "69cab36a6dc82cd19f65378a",
             strokeID: "stroke1",
             point:
             {
@@ -58,7 +58,7 @@ socket.on("connect", () =>
 
         socket.emit("stroke_end",
         {
-            boardID: "boardA",
+            boardID: "69cab36a6dc82cd19f65378a",
             strokeID: "stroke1"
         })
 
