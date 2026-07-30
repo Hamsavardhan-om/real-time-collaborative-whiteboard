@@ -17,6 +17,16 @@ function Whiteboard()
 
     const [isHoveringCanvas, setIsHoveringCanvas] = useState(false);
 
+    const [strokes, setStrokes] = useState([]);
+
+    const [currentStroke, setCurrentStroke] = useState(null);
+
+    function clearBoard()
+    {
+        setStrokes([]);
+        setCurrentStroke(null);
+    }
+
     return (
         <div className="main-container">
 
@@ -29,6 +39,8 @@ function Whiteboard()
 
                 strokeWidth={strokeWidth}
                 setStrokeWidth={setStrokeWidth}
+
+                clearBoard={clearBoard}
             />
 
             <Canvas
@@ -41,6 +53,12 @@ function Whiteboard()
 
                 isHoveringCanvas={isHoveringCanvas}
                 setIsHoveringCanvas={setIsHoveringCanvas}
+
+                strokes={strokes}
+                setStrokes={setStrokes}
+
+                currentStroke={currentStroke}
+                setCurrentStroke={setCurrentStroke}
             />
 
         </div>

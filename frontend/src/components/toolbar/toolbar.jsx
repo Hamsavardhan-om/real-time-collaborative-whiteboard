@@ -1,6 +1,17 @@
 import "./Toolbar.css";
 
-function Toolbar({tool, setTool, color, setColor, strokeWidth, setStrokeWidth})
+function Toolbar({
+    tool,
+    setTool,
+
+    color,
+    setColor,
+
+    strokeWidth,
+    setStrokeWidth,
+
+    clearBoard
+})
 {
     return (
         <div className="toolbar">
@@ -30,7 +41,7 @@ function Toolbar({tool, setTool, color, setColor, strokeWidth, setStrokeWidth})
                 <input
                     type="color"
                     value={color}
-                    onChange={(e) => setColor(e.target.value)}
+                    onChange={(event) => setColor(event.target.value)}
                 />
 
             </div>
@@ -46,8 +57,8 @@ function Toolbar({tool, setTool, color, setColor, strokeWidth, setStrokeWidth})
                     min="1"
                     max="30"
                     value={strokeWidth}
-                    onChange={(e) =>
-                        setStrokeWidth(Number(e.target.value))
+                    onChange={(event) =>
+                        setStrokeWidth(Number(event.target.value))
                     }
                 />
 
@@ -56,6 +67,15 @@ function Toolbar({tool, setTool, color, setColor, strokeWidth, setStrokeWidth})
                 </span>
 
             </div>
+
+            <div className="toolbar-divider"></div>
+
+            <button
+                className="clear-button"
+                onClick={clearBoard}
+            >
+                🗑 Clear Board
+            </button>
 
         </div>
     );
