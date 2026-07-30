@@ -1,10 +1,12 @@
-import "./Whiteboard.css";
+import "./Board.css";
 import { useState } from "react";
+import { useEffect } from "react";
+import { useParams } from "react-router-dom";
 
 import Toolbar from "../../components/Toolbar/Toolbar";
 import Canvas from "../../components/Canvas/Canvas";
 
-function Whiteboard()
+function Board()
 {
     const [tool, setTool] = useState("pen");
     const [color, setColor] = useState("#000000");
@@ -20,6 +22,13 @@ function Whiteboard()
     const [strokes, setStrokes] = useState([]);
 
     const [currentStroke, setCurrentStroke] = useState(null);
+
+    const { boardID } = useParams();
+
+    useEffect(() =>
+    {
+        console.log("Board ID:", boardID);
+    }, [boardID]);
 
     function clearBoard()
     {
@@ -65,4 +74,4 @@ function Whiteboard()
     );
 }
 
-export default Whiteboard;
+export default Board;

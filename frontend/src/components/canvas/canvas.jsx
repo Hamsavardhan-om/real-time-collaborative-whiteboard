@@ -168,9 +168,13 @@ function Canvas({
                 ref={canvasRef}
                 className="drawing-canvas"
                 onMouseDown={startDrawing}
-                onMouseMove={draw}
+                onMouseMove={(event) =>
+                {
+                    setIsHoveringCanvas(true);
+                    draw(event);
+                }}
                 onMouseUp={stopDrawing}
-            ></canvas>
+            />
 
             {
                 isHoveringCanvas && (
