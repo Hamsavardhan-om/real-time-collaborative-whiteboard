@@ -1,10 +1,9 @@
-import "./App.css";
+import Whiteboard from "./pages/Whiteboard/Whiteboard";
 
 function App()
 {
     return (
-        <>
-        </>
+        <Whiteboard />
     );
 }
 
