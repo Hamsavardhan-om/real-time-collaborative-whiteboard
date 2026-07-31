@@ -1,0 +1,1 @@
+export const AUTH_API_BASE_URL = "http://localhost:4545/api/v1/auth";
