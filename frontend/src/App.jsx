@@ -1,11 +1,12 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import Landing from "./pages/Landing page/Landing";
-import Home from "./pages/Home/Home";
-import Board from "./pages/Board/Board";
 import Login from "./pages/Login/Login";
 import Register from "./pages/Register/Register";
 import RegisterSuccess from "./pages/Register/RegisterSuccess";
+import Home from "./pages/Home/Home";
+import Board from "./pages/Board/Board";
+import ProtectedRoute from "./utils/ProtectedRoute/ProtectedRoute";
 
 function App()
 {
@@ -20,11 +21,6 @@ function App()
                 />
 
                 <Route
-                    path="/home"
-                    element={<Home />}
-                />
-
-                <Route
                     path="/login"
                     element={<Login />}
                 />
@@ -33,16 +29,25 @@ function App()
                     path="/register"
                     element={<Register />}
                 />
-                
+
                 <Route
-                    path="/registration-success"
+                    path="/register-success"
                     element={<RegisterSuccess />}
                 />
 
-                <Route
-                    path="/boards/:boardID"
-                    element={<Board />}
-                />
+                <Route element={<ProtectedRoute />}>
+
+                    <Route
+                        path="/home"
+                        element={<Home />}
+                    />
+
+                    <Route
+                        path="/boards/:boardID"
+                        element={<Board />}
+                    />
+
+                </Route>
 
             </Routes>
 
