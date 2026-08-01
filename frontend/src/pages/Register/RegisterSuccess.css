@@ -1,0 +1,111 @@
+*
+{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+.success-container
+{
+    width:100vw;
+    height:100vh;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    background:#f8fafc;
+
+    background-image:
+        linear-gradient(#e5e7eb 1px, transparent 1px),
+        linear-gradient(90deg, #e5e7eb 1px, transparent 1px);
+
+    background-size:40px 40px;
+}
+
+.success-card
+{
+    width:520px;
+
+    background:white;
+
+    padding:50px;
+
+    border-radius:18px;
+
+    box-shadow:0 10px 30px rgba(0,0,0,0.08);
+
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+
+    gap:20px;
+
+    text-align:center;
+}
+
+.success-icon
+{
+    width:80px;
+    height:80px;
+
+    border-radius:50%;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    background:#22c55e;
+
+    color:white;
+
+    font-size:40px;
+    font-weight:bold;
+}
+
+.success-card h1
+{
+    color:#111827;
+
+    font-size:2rem;
+}
+
+.success-message
+{
+    color:#374151;
+
+    font-size:18px;
+}
+
+.verification-message
+{
+    color:#6b7280;
+
+    line-height:1.7;
+}
+
+.login-button
+{
+    margin-top:15px;
+
+    padding:14px 32px;
+
+    border:none;
+    border-radius:10px;
+
+    background:#2563eb;
+
+    color:white;
+
+    font-size:16px;
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:0.2s;
+}
+
+.login-button:hover
+{
+    background:#1d4ed8;
+}

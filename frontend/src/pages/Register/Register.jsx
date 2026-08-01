@@ -57,7 +57,7 @@ function Register()
                 throw new Error(data.message || "Registration failed.");
             }
 
-            navigate("/login");
+            navigate("/registration-success");
         }
         catch(error)
         {
